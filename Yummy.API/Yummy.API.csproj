@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0-rc.2.24474.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.1">
       <PrivateAssets>all</PrivateAssets>
@@ -17,11 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\Yummy.Business\Yummy.Business.csproj" />
     <ProjectReference Include="..\Yummy.DataAccess\Yummy.DataAccess.csproj" />
+    <ProjectReference Include="..\Yummy.DTO\Yummy.DTO.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,9 +1,17 @@
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using Yummy.API.Extensions;
 using Yummy.DataAccess.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddServiceExtensions(builder.Configuration);
+
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddDbContext<YummyContext>(options =>
 {
