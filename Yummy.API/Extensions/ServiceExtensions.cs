@@ -15,6 +15,9 @@ namespace Yummy.API.Extensions
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICategoryService, CategoryManager>();
+
+            services.AddScoped<IChefRepository, ChefRepository>();
+            services.AddScoped<IChefService, ChefManager>();
         }
     }
 }
