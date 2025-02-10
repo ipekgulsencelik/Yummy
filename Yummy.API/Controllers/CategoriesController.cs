@@ -30,7 +30,6 @@ namespace Yummy.API.Controllers
             var newCategory = _mapper.Map<Category>(createCategoryDTO);            
             _categoryService.TCreate(newCategory);
             return Ok("Yeni Kategori Oluşturuldu");
-            //return CreatedAtAction(nameof(GetCategoryByID), new { id = newCategory.CategoryID }, newCategory);
         }
 
         [HttpDelete("{id}")]
@@ -55,11 +54,12 @@ namespace Yummy.API.Controllers
         [HttpPut]
         public IActionResult UpdateCategory(UpdateCategoryDTO updateCategoryDTO)
         {
-            var value = _mapper.Map<Category>(updateCategoryDTO);
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
+            
+            var value = _mapper.Map<Category>(updateCategoryDTO);            
             _categoryService.TUpdate(value);
             return Ok("Kategori Güncellendi");
         }
@@ -76,21 +76,21 @@ namespace Yummy.API.Controllers
         [HttpGet("count")]
         public IActionResult GetCategoryCount()
         {
-            var courseCount = _categoryService.TCount();
-            return Ok(courseCount);
+            var categoryCount = _categoryService.TCount();
+            return Ok(categoryCount);
         }
 
         [HttpPut("set-visible/{id}")]
         public IActionResult SetCategoryVisibleOnHome(int id)
         {
-            _categoryService.TShowOnHome(id);
+            _categoryService.TSetCategoryVisibleOnHome(id);
             return Ok("Ana Sayfada Gösteriliyor");
         }
 
         [HttpPut("set-hidden/{id}")]
         public IActionResult SetCategoryHiddenOnHome(int id)
         {
-            _categoryService.TDontShowOnHome(id);
+            _categoryService.TSetCategoryHiddenOnHome(id);
             return Ok("Ana Sayfada Gösterilmiyor");
         }
 
@@ -104,7 +104,7 @@ namespace Yummy.API.Controllers
         [HttpPut("toggle-status/{id}")]
         public IActionResult ToggleCategoryStatus(int id)
         {
-            _categoryService.TChangeStatus(id);
+            _categoryService.TToggleCategoryStatus(id);
             return Ok("Durum Değiştirildi.");
         }
     }

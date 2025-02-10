@@ -12,19 +12,30 @@ namespace Yummy.DataAccess.Concrete
         {
         }
 
-        public async Task ChangeStatus(int id)
+        public void ToggleCategoryStatus(int id)
         {
-            await _context.Categories.Where(c => c.CategoryID == id).ExecuteUpdateAsync(c => c.SetProperty(x => x.IsActive, x => !x.IsActive));
+            var category = _context.Categories.Find(id);
+            if (category.IsActive == true)
+            {
+                category.IsActive = false;
+                category.IsVisible = false;
+            }
+            else
+            {
+                category.IsActive = true;
+            }
+            _context.Update(category);
+            _context.SaveChanges();
         }
 
-        public async Task DontShowOnHome(int id)
+        public async Task SetCategoryHiddenOnHome(int id)
         {
-            await _context.Categories.Where(c => c.CategoryID == id).ExecuteUpdateAsync(c => c.SetProperty(x => x.IsVisible, false));
+            await _context.Categories.Where(c => c.CategoryID == id && c.IsActive).ExecuteUpdateAsync(c => c.SetProperty(x => x.IsVisible, false));
         }
 
-        public async Task ShowOnHome(int id)
+        public async Task SetCategoryVisibleOnHome(int id)
         {
-            await _context.Categories.Where(c => c.CategoryID == id).ExecuteUpdateAsync(c => c.SetProperty(x => x.IsVisible, true));
+            await _context.Categories.Where(c => c.CategoryID == id && c.IsActive).ExecuteUpdateAsync(c => c.SetProperty(x => x.IsVisible, true));
         }
     }
 }

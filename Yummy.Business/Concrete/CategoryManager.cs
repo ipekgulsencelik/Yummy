@@ -13,19 +13,19 @@ namespace Yummy.Business.Concrete
             _categoryRepository = categoryRepository;
         }
 
-        public async Task TDontShowOnHome(int id)
+        public async Task TSetCategoryHiddenOnHome(int id)
         {
-            await _categoryRepository.DontShowOnHome(id);
+            await _categoryRepository.SetCategoryHiddenOnHome(id);
         }
 
-        public async Task TShowOnHome(int id)
+        public async Task TSetCategoryVisibleOnHome(int id)
         {
-            await _categoryRepository.ShowOnHome(id);
+            await _categoryRepository.SetCategoryVisibleOnHome(id);
         }
 
-        public async Task TChangeStatus(int id)
+        public void TToggleCategoryStatus(int id)
         {
-            await _categoryRepository.ChangeStatus(id);
+            _categoryRepository.ToggleCategoryStatus(id);
         }
     }
 }

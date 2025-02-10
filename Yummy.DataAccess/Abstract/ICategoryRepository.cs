@@ -4,8 +4,8 @@ namespace Yummy.DataAccess.Abstract
 {
     public interface ICategoryRepository : IRepository<Category>
     {
-        Task ShowOnHome(int id);
-        Task DontShowOnHome(int id);
-        Task ChangeStatus(int id);
+        Task SetCategoryVisibleOnHome(int id);
+        Task SetCategoryHiddenOnHome(int id);
+        void ToggleCategoryStatus(int id);
     }
 }

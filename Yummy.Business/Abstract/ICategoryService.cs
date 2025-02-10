@@ -4,8 +4,8 @@ namespace Yummy.Business.Abstract
 {
     public interface ICategoryService : IGenericService<Category>
     {
-        Task TShowOnHome(int id);
-        Task TDontShowOnHome(int id);
-        Task TChangeStatus(int id);
+        Task TSetCategoryVisibleOnHome(int id);
+        Task TSetCategoryHiddenOnHome(int id);
+        void TToggleCategoryStatus(int id);
     }
 }
