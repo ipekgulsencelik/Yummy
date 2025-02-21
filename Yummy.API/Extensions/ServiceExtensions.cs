@@ -24,6 +24,9 @@ namespace Yummy.API.Extensions
 
             services.AddScoped<IFeatureRepository, FeatureRepository>();
             services.AddScoped<IFeatureService, FeatureManager>();
+
+            services.AddScoped<IMessageRepository, MessageRepository>();
+            services.AddScoped<IMessageService, MessageManager>();
         }
     }
 }
