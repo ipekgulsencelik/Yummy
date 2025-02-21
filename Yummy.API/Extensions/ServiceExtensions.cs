@@ -21,6 +21,9 @@ namespace Yummy.API.Extensions
 
             services.AddScoped<IContactRepository, ContactRepository>();
             services.AddScoped<IContactService, ContactManager>();
+
+            services.AddScoped<IFeatureRepository, FeatureRepository>();
+            services.AddScoped<IFeatureService, FeatureManager>();
         }
     }
 }
