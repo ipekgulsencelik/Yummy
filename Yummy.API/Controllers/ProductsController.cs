@@ -10,7 +10,7 @@ namespace Yummy.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController(IValidator<CreateProductDTO> _validator, IMapper _mapper, IProductService _productService) : ControllerBase
+    public class ProductsController(IValidator<CreateProductDTO> _createValidator, IValidator<UpdateProductDTO> _UpdateValidator, IMapper _mapper, IProductService _productService) : ControllerBase
     {
         [HttpGet]
         public IActionResult GetProductList()
@@ -23,7 +23,7 @@ namespace Yummy.API.Controllers
         [HttpPost]
         public IActionResult CreateProduct(CreateProductDTO createProductDTO)
         {
-            var validaitonResult = _validator.Validate(createProductDTO);
+            var validaitonResult = _createValidator.Validate(createProductDTO);
             if (!validaitonResult.IsValid)
             {
                 return BadRequest(validaitonResult.Errors.Select(x => x.ErrorMessage));
@@ -43,7 +43,7 @@ namespace Yummy.API.Controllers
         public IActionResult DeleteProduct(int id)
         {
             _productService.TDelete(id);
-            return Ok("Kategori Silindi");
+            return Ok("Ürün Silindi");
         }
 
         [HttpGet("{id}")]
@@ -52,7 +52,7 @@ namespace Yummy.API.Controllers
             var product = _productService.TGetByID(id);
             if (product == null)
             {
-                return NotFound("Kategori bulunamadı.");
+                return NotFound("Ürün bulunamadı.");
             }
 
             return Ok(product);
@@ -61,19 +61,20 @@ namespace Yummy.API.Controllers
         [HttpPut]
         public IActionResult UpdateProduct(UpdateProductDTO updateProductDTO)
         {
-            if (!ModelState.IsValid)
+            var validaitonResult = _UpdateValidator.Validate(updateProductDTO);
+            if (!validaitonResult.IsValid)
             {
-                return BadRequest();
+                return BadRequest(validaitonResult.Errors.Select(x => x.ErrorMessage));
             }
 
             var value = _mapper.Map<Product>(updateProductDTO);
             _productService.TUpdate(value);
-            return Ok("Kategori Güncellendi");
+            return Ok(new { message = "Ürün güncelleme işlemi başarılı", data = updateProductDTO });
         }
 
         [AllowAnonymous]
         [HttpGet("active")]
-        public IActionResult GetActiveCategories()
+        public IActionResult GetActiveProducts()
         {
             var values = _productService.TGetFilteredList(x => x.IsActive == true);
             return Ok(values);
@@ -91,18 +92,18 @@ namespace Yummy.API.Controllers
         public IActionResult SetProductVisibleOnHome(int id)
         {
             _productService.TSetProductVisibleOnHome(id);
-            return Ok("Ana Sayfada Gösteriliyor");
+            return Ok("Ürün Ana Sayfada Gösteriliyor");
         }
 
         [HttpPut("set-hidden/{id}")]
         public IActionResult SetProductHiddenOnHome(int id)
         {
             _productService.TSetProductHiddenOnHome(id);
-            return Ok("Ana Sayfada Gösterilmiyor");
+            return Ok("Ürün Ana Sayfada Gösterilmiyor");
         }
 
         [HttpGet("visible-on-home")]
-        public IActionResult GetCategoriesVisibleOnHome()
+        public IActionResult GetProductsVisibleOnHome()
         {
             var value = _productService.TGetFilteredList(x => x.IsActive && x.IsVisible);
             return Ok(value);
@@ -112,7 +113,7 @@ namespace Yummy.API.Controllers
         public IActionResult ToggleProductStatus(int id)
         {
             _productService.TToggleProductStatus(id);
-            return Ok("Durum Değiştirildi.");
+            return Ok("Ürün Durumu Değiştirildi.");
         }
     }
 }

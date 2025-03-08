@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using Yummy.DTO.DTOs.ProductDTOs;
 
-namespace Yummy.Business.ValidationRules
+namespace Yummy.Business.ValidationRules.ProductValidations
 {
-    public class ProductValidatior : AbstractValidator<CreateProductDTO>
+    public class UpdateProductValidator : AbstractValidator<UpdateProductDTO>
     {
-        public ProductValidatior()
+        public UpdateProductValidator()
         {
             RuleFor(x => x.ProductName).NotEmpty().WithMessage("Ürün adı boş geçilemez!");
             RuleFor(x => x.ProductName).MinimumLength(2).WithMessage("En az 2 karakter veri girişi yapın!");

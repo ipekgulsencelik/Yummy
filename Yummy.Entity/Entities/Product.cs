@@ -1,4 +1,6 @@
-﻿namespace Yummy.Entity.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace Yummy.Entity.Entities
 {
     public class Product
     {
@@ -9,6 +11,7 @@
         public string? ImageUrl { get; set; }
 
         public int CategoryID { get; set; }
+        [JsonIgnore]
         public virtual Category? Category { get; set; }
 
         public bool IsVisible { get; set; } = false;

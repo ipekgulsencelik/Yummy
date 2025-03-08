@@ -1,12 +1,11 @@
 ﻿using FluentValidation;
 using Yummy.Business.Abstract;
 using Yummy.Business.Concrete;
-using Yummy.Business.ValidationRules;
+using Yummy.Business.ValidationRules.ProductValidations;
 using Yummy.DataAccess.Abstract;
 using Yummy.DataAccess.Concrete;
 using Yummy.DataAccess.Repositories;
 using Yummy.DTO.DTOs.ProductDTOs;
-using Yummy.Entity.Entities;
 
 namespace Yummy.API.Extensions
 {
@@ -35,7 +34,8 @@ namespace Yummy.API.Extensions
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductService, ProductManager>();
 
-            services.AddScoped<IValidator<CreateProductDTO>, ProductValidatior>();
+            services.AddScoped<IValidator<CreateProductDTO>, CreateProductValidator>();
+            services.AddScoped<IValidator<UpdateProductDTO>, UpdateProductValidator>();
         }
     }
 }
