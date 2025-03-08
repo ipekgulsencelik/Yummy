@@ -65,14 +65,6 @@ namespace Yummy.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("active")]
-        public IActionResult GetActiveContacts()
-        {
-            var contacts = _contactService.TGetFilteredList(x => x.IsActive == true);
-            return Ok(contacts);
-        }
-
-        [AllowAnonymous]
         [HttpGet("count")]
         public IActionResult GetContactCount()
         {
@@ -92,13 +84,6 @@ namespace Yummy.API.Controllers
         {
             _contactService.TSetContactHiddenOnHome(id);
             return Ok("Ana Sayfada Gösterilmiyor");
-        }
-
-        [HttpGet("visible-on-home")]
-        public IActionResult GetContactsVisibleOnHome()
-        {
-            var contacts = _contactService.TGetFilteredList(x => x.IsActive && x.IsVisible);
-            return Ok(contacts);
         }
     }
 }

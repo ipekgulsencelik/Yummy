@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using Yummy.Entity.Entities;
+using Yummy.DTO.DTOs.ProductDTOs;
 
 namespace Yummy.Business.ValidationRules
 {
-    public class ProductValidatior : AbstractValidator<Product>
+    public class ProductValidatior : AbstractValidator<CreateProductDTO>
     {
         public ProductValidatior()
         {
