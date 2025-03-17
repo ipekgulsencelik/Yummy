@@ -37,5 +37,10 @@ namespace Yummy.DataAccess.Concrete
         {
             await _context.Products.Where(p => p.ProductID == id && p.IsActive).ExecuteUpdateAsync(p => p.SetProperty(x => x.IsVisible, true));
         }
+
+        public async Task<List<Product>> GetProductsWithCategory()
+        {
+            return await _context.Products.Include(p => p.Category).ToListAsync();
+        }
     }
 }

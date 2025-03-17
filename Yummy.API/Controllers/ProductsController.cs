@@ -20,6 +20,14 @@ namespace Yummy.API.Controllers
             return Ok(result);
         }
 
+        [HttpGet("ProductListWithCategory")]
+        public async Task<IActionResult> GetProductListWithCategory()
+        {
+            var values = await _productService.TGetProductsWithCategory();
+            var result = _mapper.Map<List<ResultProductWithCategoryDTO>>(values);
+            return Ok(result);
+        }
+
         [HttpPost]
         public IActionResult CreateProduct(CreateProductDTO createProductDTO)
         {

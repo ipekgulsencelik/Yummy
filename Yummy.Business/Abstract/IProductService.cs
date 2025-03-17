@@ -7,5 +7,6 @@ namespace Yummy.Business.Abstract
         Task TSetProductVisibleOnHome(int id);
         Task TSetProductHiddenOnHome(int id);
         void TToggleProductStatus(int id);
+        Task<List<Product>> TGetProductsWithCategory();
     }
 }

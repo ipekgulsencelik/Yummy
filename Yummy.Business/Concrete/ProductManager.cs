@@ -13,6 +13,11 @@ namespace Yummy.Business.Concrete
             _productRepository = productRepository;
         }
 
+        public async Task<List<Product>> TGetProductsWithCategory()
+        {
+            return await _productRepository.GetProductsWithCategory();
+        }
+
         public async Task TSetProductHiddenOnHome(int id)
         {
             await _productRepository.SetProductHiddenOnHome(id);

@@ -7,5 +7,6 @@ namespace Yummy.DataAccess.Abstract
         Task SetProductVisibleOnHome(int id);
         Task SetProductHiddenOnHome(int id);
         void ToggleProductStatus(int id);
+        Task<List<Product>> GetProductsWithCategory();
     }
 }
