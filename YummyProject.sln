@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yummy.DTO", "Yummy.DTO\Yumm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yummy.Business", "Yummy.Business\Yummy.Business.csproj", "{D3D5134D-EB40-4057-918F-136504122857}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yummy.UI", "Yummy.UI\Yummy.UI.csproj", "{CEACBB3F-B1F6-4A81-A206-E27D968F963C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D3D5134D-EB40-4057-918F-136504122857}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3D5134D-EB40-4057-918F-136504122857}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3D5134D-EB40-4057-918F-136504122857}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEACBB3F-B1F6-4A81-A206-E27D968F963C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEACBB3F-B1F6-4A81-A206-E27D968F963C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEACBB3F-B1F6-4A81-A206-E27D968F963C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEACBB3F-B1F6-4A81-A206-E27D968F963C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
