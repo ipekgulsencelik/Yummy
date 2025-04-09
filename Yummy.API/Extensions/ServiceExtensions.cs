@@ -34,6 +34,9 @@ namespace Yummy.API.Extensions
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductService, ProductManager>();
 
+            services.AddScoped<IServiceRepository, ServiceRepository>();
+            services.AddScoped<IServiceService, ServiceManager>();
+
             services.AddScoped<IValidator<CreateProductDTO>, CreateProductValidator>();
             services.AddScoped<IValidator<UpdateProductDTO>, UpdateProductValidator>();
         }
