@@ -1,6 +1,6 @@
-﻿namespace Yummy.Entity.Entities
+﻿namespace Yummy.DTO.DTOs.TestimonialDTOs
 {
-    public class Testimonial
+    public class ResultTestimonialDTO
     {
         public int TestimonialID { get; set; }
         public string? Name { get; set; }
