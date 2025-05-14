@@ -40,6 +40,9 @@ namespace Yummy.API.Extensions
             services.AddScoped<ITestimonialRepository, TestimonialRepository>();
             services.AddScoped<ITestimonialService, TestimonialManager>();
 
+            services.AddScoped<IYummyEventRepository, YummyEventRepository>();
+            services.AddScoped<IYummyEventService, YummyEventManager>();
+
             services.AddScoped<IValidator<CreateProductDTO>, CreateProductValidator>();
             services.AddScoped<IValidator<UpdateProductDTO>, UpdateProductValidator>();
         }
