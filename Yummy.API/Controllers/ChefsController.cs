@@ -73,6 +73,14 @@ namespace Yummy.API.Controllers
         }
 
         [AllowAnonymous]
+        [HttpGet("last-three-active")]
+        public IActionResult GetLast3Chefs()
+        {
+            var chefs = _chefService.TGetFilteredList(x => x.IsActive && x.IsVisible).OrderByDescending(x => x.ChefID).Take(3);
+            return Ok(chefs);
+        }
+
+        [AllowAnonymous]
         [HttpGet("count")]
         public IActionResult GetChefCount()
         {
