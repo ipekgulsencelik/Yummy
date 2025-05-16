@@ -10,7 +10,7 @@ namespace Yummy.UI.ViewComponents.DefaultViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var values = await _client.GetFromJsonAsync<List<ResultEventDTO>>("YummyEvents/last-four-active");
+            var values = await _client.GetFromJsonAsync<List<ResultEventDTO>>("YummyEvents/last-five-active");
             return View(values);
         }
     }

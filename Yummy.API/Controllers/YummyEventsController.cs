@@ -73,10 +73,10 @@ namespace Yummy.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("last-four-active")]
-        public IActionResult GetLast4YummyEvents()
+        [HttpGet("last-five-active")]
+        public IActionResult GetLast5YummyEvents()
         {
-            var organization = _organizationService.TGetFilteredList(x => x.IsActive && x.IsVisible).OrderByDescending(x => x.YummyEventID).Take(4);
+            var organization = _organizationService.TGetFilteredList(x => x.IsActive && x.IsVisible).OrderByDescending(x => x.YummyEventID).Take(5);
             return Ok(organization);
         }
 
